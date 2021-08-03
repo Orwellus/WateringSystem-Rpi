@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta http-equiv="refresh" content="60">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+            
+    .radio-wrapper {
+    width: 60px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 25px;
+    position: relative;
+    p {
+        position: absolute;
+        z-index: 3;
+        color: white;
+        font-size: 1.7em;
+        margin: 0;
+        margin-top: 13px;
+    }
+    .correct {
+        left: 30px;
+        
+    }
+    .wrong {
+        right: 30px;
+    }
+
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+i { 
+  z-index: 99;
+  font-size: 18px;
+}
+.neutral-icon i {
+  font-size: 10px;
+}
+.neutral + label {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    left: 33%;
+    transition: transform 1s;
+    margin-top: -18px;
+}
+
+.neutral:checked + label {
+    border: 2px solid rgba(0, 0, 0, 1);
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    margin-top: -18px;
+    border-radius: 50%;
+    background: rgb(238, 238, 238);
+    background: -moz-linear-gradient(top, rgba(238, 238, 238, 1) 0%, rgba(204, 204, 204, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(238, 238, 238, 1) 0%, rgba(204, 204, 204, 1) 100%);
+    background: -o-linear-gradient(top, rgba(238, 238, 238, 1) 0%, rgba(204, 204, 204, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(238, 238, 238, 1) 0%, rgba(204, 204, 204, 1) 100%);
+    background: linear-gradient(to bottom, rgba(238, 238, 238, 1) 0%, rgba(204, 204, 204, 1) 100%);
+}
+
+.yes + label {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    margin-top: -19px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    text-align: center;
+}
+
+.yes:checked + label {
+    margin-top: -19px;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: rgb(32, 213, 50);
+    background: -moz-linear-gradient(top, rgba(32, 213, 50, 1) 0%, rgba(28, 195, 1, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(32, 213, 50, 1) 0%, rgba(28, 195, 1, 1) 100%);
+    background: -o-linear-gradient(top, rgba(32, 213, 50, 1) 0%, rgba(28, 195, 1, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(32, 213, 50, 1) 0%, rgba(28, 195, 1, 1) 100%);
+    background: linear-gradient(to bottom, rgba(32, 213, 50, 1) 0%, rgba(28, 195, 1, 1) 100%);
+    -moz-animation-duration: 0.4s;
+    -moz-animation-name: slidein;
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-name: slidein;
+    animation-duration: 0.4s;
+    animation-name: slidein;
+    -webkit-transform: translateZ(0);
+}
+
+.no + label {
+    margin-top: -19px;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+
+.no:checked + label {
+    margin-top: -19px;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: red;
+    -moz-animation-duration: 0.4s;
+    -moz-animation-name: slideno;
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-name: slideno;
+    animation-duration: 0.4s;
+    animation-name: slideno;
+    -webkit-transform: translateZ(0);
+    background: rgb(230, 108, 103);
+    background: -moz-linear-gradient(top, rgba(230, 108, 103, 1) 0%, rgba(221, 79, 75, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(230, 108, 103, 1) 0%, rgba(221, 79, 75, 1) 100%);
+    background: -o-linear-gradient(top, rgba(230, 108, 103, 1) 0%, rgba(221, 79, 75, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(230, 108, 103, 1) 0%, rgba(221, 79, 75, 1) 100%);
+    background: linear-gradient(to bottom, rgba(230, 108, 103, 1) 0%, rgba(221, 79, 75, 1) 100%);
+}
+
+
+@keyframes slidein {
+    from {
+        transform: translate(50px, 0);
+    }
+    to {
+        transform: translate(0px, 0px);
+    }
+}
+
+
+@keyframes slideno {
+    from {
+      transform: translate(-50px,0);
+    }
+    to {
+        transform: translate( 0px, 0px);
+    }
+}
+
+@keyframes returnLeft {
+    from {
+        transform: translate(-50px,0);
+    }
+    to {
+        transform: translate(0px,0);
+    }
+}
+
+@keyframes returnRight {
+    from {
+        transform: translate(50px,0);
+    }
+    to {
+        transform: translate(0px,0);
+    }
+}
+    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <title>Podlewanie</title>
+  </head>
+  <body style="background-color:powderblue;">
+    <h1 class="text-center">System Podlewania</h1>
+    <hr>
+    <h3 class="text-center">Otwieranie</h3>
+    <h5 class="text-center">Aktualna godzina: {{data.get('time')}} Aktualna Temperatura: {{data.get('temp')}}</h4>
+    <div class="container">
+        <div class="row align-items-center">
+          <div class="col">
+            <h4 class="text-center">Otwieranie drzwi [Przód]<h4>
+          </div>
+          <div class="col">
+            <div class="radio-wrapper">
+                <p class="correct"><i class="ion-checkmark-round"></i>
+                </p>
+                <p class="neutral-icon"><i class="ion-record"></i>
+                </p>
+                <p class="wrong"><i class="ion-close-round"></i></p>
+                <input type="radio" name="event" class="yes" id="radio-yes" {{data.get('switch_1_open')}} />
+            
+                <label for="radio-yes"></label>
+            
+                <input type="radio" name="event" class="neutral" id="radio-neutral" {{data.get('switch_1_mid')}} />
+                <label for="radio-neutral"></label>
+            
+            
+                <input type="radio" name="event" class="no" id="radio-no" {{data.get('switch_1_close')}} />
+                <label for="radio-no"></label>
+              </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" pattern="[0-9][0-9].[0-9]" id="switch_1_start_temp" placeholder={% if data.get('switch_1_start_temp') == '00.0' %}  Temperatura_Otwierania {% else %} {{data.get('switch_1_start_temp')}} {% end %}>
+                    <button class="btn btn-outline-secondary" type="button" id="button_1_start_temp">Ustaw</button>
+                  </div>
+            </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" pattern="[0-9][0-9].[0-9]" id="switch_1_end_temp" placeholder={% if data.get('switch_1_end_temp') == '00.0' %}  Temperatura_Zamykania {% else %} {{data.get('switch_1_end_temp')}} {% end %}>
+                <button class="btn btn-outline-secondary" type="button" id="button_1_end_temp">Ustaw</button>
+              </div>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col">
+          <h4 class="text-center">Otwieranie drzwi [Tył]<h4>
+        </div>
+        <div class="col">
+          <div class="radio-wrapper">
+              <p class="correct"><i class="ion-checkmark-round"></i>
+              </p>
+              <p class="neutral-icon"><i class="ion-record"></i>
+              </p>
+              <p class="wrong"><i class="ion-close-round"></i></p>
+              <input type="radio" name="event2" class="yes" id="radio-yes2" {{data.get('switch_2_open')}} />
+          
+              <label for="radio-yes2"></label>
+          
+              <input type="radio" name="event2" class="neutral" id="radio-neutral2" {{data.get('switch_2_mid')}} />
+              <label for="radio-neutral2"></label>
+          
+          
+              <input type="radio" name="event2" class="no" id="radio-no2" {{data.get('switch_2_close')}} />
+              <label for="radio-no2"></label>
+            </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+          <div class="col">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" pattern="[0-9][0-9].[0-9]" id="switch_2_start_temp" placeholder={% if data.get('switch_2_start_temp') == '00.0' %}  Temperatura_Otwierania {% else %} {{data.get('switch_2_start_temp')}} {% end %}>
+                <button class="btn btn-outline-secondary" type="button" id="button_2_start_temp">Ustaw</button>
+                </div>
+          </div>
+  </div>
+  <div class="row align-items-center">
+      <div class="col">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" pattern="[0-9][0-9].[0-9]" id="switch_2_end_temp" placeholder={% if data.get('switch_2_end_temp') == '00.0' %}  Temperatura_Zamykania {% else %} {{data.get('switch_2_end_temp')}} {% end %}>
+            <button class="btn btn-outline-secondary" type="button" id="button_2_end_temp">Ustaw</button>
+            </div>
+      </div>
+  </div>
+</div>
+<hr>
+<h3 class="text-center">Podlewanie</h3>
+<div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        <h4 class="text-center">Szklarnia<h4>
+      </div>
+      <div class="col">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
+            <input type="checkbox" id="switch-3" class="mdl-switch__input"{{data.get('switch_3')}}>
+            <span class="mdl-switch__label"></span>
+          </label>
+      </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_3_time" placeholder={% if data.get('switch_3_time') == '00:00' %}  Godzina_Rozpoczęcia {% else %} {{data.get('switch_3_time')}} {% end %}>
+                <button class="btn btn-outline-secondary" type="button" id="button_3_time">Ustaw</button>
+              </div>
+        </div>
+</div>
+<div class="row align-items-center">
+    <div class="col">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_3_duration" placeholder={% if data.get('switch_3_duration') == '00:00' %} Godzina_Zakończenia {% else %} {{data.get('switch_3_duration')}} {% end %}>
+            <button class="btn btn-outline-secondary" type="button" id="button_3_duration">Ustaw</button>
+          </div>
+    </div>
+</div>
+<div class="row align-items-center">
+    <div class="col">
+      <h4 class="text-center">Borówki<h4>
+    </div>
+    <div class="col">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
+            <input type="checkbox" id="switch-4" class="mdl-switch__input"{{data.get('switch_4')}}>
+            <span class="mdl-switch__label"></span>
+          </label>
+    </div>
+  </div>
+  <div class="row align-items-center">
+      <div class="col">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_4_time" placeholder={% if data.get('switch_4_time') == '00:00' %}  Godzina_Rozpoczęcia {% else %} {{data.get('switch_4_time')}} {% end %}>
+            <button class="btn btn-outline-secondary" type="button" id="button_4_time">Ustaw</button>
+            </div>
+      </div>
+</div>
+<div class="row align-items-center">
+  <div class="col">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_4_duration" placeholder={% if data.get('switch_4_duration') == '00:00' %} Godzina_Zakończenia {% else %} {{data.get('switch_4_duration')}} {% end %}>
+        <button class="btn btn-outline-secondary" type="button" id="button_4_duration">Ustaw</button>
+        </div>
+  </div>
+</div>
+<div class="row align-items-center">
+    <div class="col">
+      <h4 class="text-center">Ogród<h4>
+    </div>
+    <div class="col">
+      <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-5">
+          <input type="checkbox" id="switch-5" class="mdl-switch__input"{{data.get('switch_5')}}>
+          <span class="mdl-switch__label"></span>
+        </label>
+    </div>
+  </div>
+  <div class="row align-items-center">
+      <div class="col">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_5_time" placeholder={% if data.get('switch_5_time') == '00:00' %}  Godzina_Rozpoczęcia {% else %} {{data.get('switch_5_time')}} {% end %}>
+            <button class="btn btn-outline-secondary" type="button" id="button_5_time">Ustaw</button>
+            </div>
+      </div>
+</div>
+<div class="row align-items-center">
+  <div class="col">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_5_duration" placeholder={% if data.get('switch_5_duration') == '00:00' %} Godzina_Zakończenia {% else %} {{data.get('switch_5_duration')}} {% end %}>
+        <button class="btn btn-outline-secondary" type="button" id="button_5_duration">Ustaw</button>
+        </div>
+  </div>
+</div>
+<div class="row align-items-center">
+  <div class="col">
+    <h4 class="text-center">Doniczki<h4>
+  </div>
+  <div class="col">
+      <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-6">
+          <input type="checkbox" id="switch-6" class="mdl-switch__input"{{data.get('switch_6')}}>
+          <span class="mdl-switch__label"></span>
+        </label>
+  </div>
+</div>
+<div class="row align-items-center">
+    <div class="col">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_6_time" placeholder={% if data.get('switch_6_time') == '00:00' %}  Godzina_Rozpoczęcia {% else %} {{data.get('switch_6_time')}} {% end %}>
+            <button class="btn btn-outline-secondary" type="button" id="button_6_time">Ustaw</button>
+          </div>
+    </div>
+</div>
+<div class="row align-items-center">
+<div class="col">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" id="switch_6_duration" placeholder={% if data.get('switch_6_duration') == '00:00' %} Godzina_Zakończenia {% else %} {{data.get('switch_6_duration')}} {% end %}>
+        <button class="btn btn-outline-secondary" type="button" id="button_6_duration">Ustaw</button>
+      </div>
+</div>
+</div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="{{ static_url("ws-client.js")}}"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </body>
+</html>
